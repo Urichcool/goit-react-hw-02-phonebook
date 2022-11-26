@@ -11,7 +11,8 @@ const contactArr = [];
 
 class AddContactsForm extends Component {
     static propTypes = {
-  onSubmit: PropTypes.func.isRequired
+      onSubmit: PropTypes.func.isRequired,
+      contacts:PropTypes.array.isRequired
   };
 
   state = {
@@ -26,6 +27,10 @@ class AddContactsForm extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
+     if (this.props.contacts.some(contact => contact.name === this.state.name)) {
+       window.alert(`${this.state.name} is already in contacts`);
+       return
+     }
     contactArr.push({
       name: this.state.name,
       id: nanoid(),

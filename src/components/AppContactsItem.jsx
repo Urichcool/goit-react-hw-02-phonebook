@@ -1,11 +1,16 @@
-import { ContactsListItem } from './App,styled';
+import {
+  ContactsListItem,
+ContactsDeleteButton
+} from './App,styled';
 import PropTypes from 'prop-types';
 
-const AppContactsItem = ({ name, number }) => {
-    
+
+
+const AppContactsItem = ({ name, number, id, setContact }) => {
   return (
     <ContactsListItem>
-            {name}: {number}
+      {name}: {number}
+      <ContactsDeleteButton onClick = {() => setContact(id)}>Delete</ContactsDeleteButton>
           </ContactsListItem>
         )
   ;

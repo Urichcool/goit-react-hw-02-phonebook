@@ -68,3 +68,18 @@ export const ContactsListLabel = styled.label`
 export const ContactsFilterInput = styled.input`
     width: 200px;
 `
+
+export const ContactsDeleteButton = styled.button`
+  margin: 0;
+  margin-left: 15px;
+  padding: 0;
+  width: 50px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  &:hover,
+  &:focus {
+    background-color: #b3b3f1;
+  }
+`;

@@ -4,7 +4,8 @@ import {
 import AppContactsItem from './AppContactsItem';
 import PropTypes from 'prop-types';
 
-const AppContactsList = ({contacts, filter}) => {
+
+const AppContactsList = ({contacts, filter,setContact}) => {
     return (<ContactsList>
         {contacts
             .filter(contact =>
@@ -17,6 +18,8 @@ const AppContactsList = ({contacts, filter}) => {
                     name={name}
                     key={id}
                     number={number}
+                    id={id}
+                    setContact={setContact}
                 />
             ))}
     </ContactsList>
