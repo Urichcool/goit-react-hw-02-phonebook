@@ -7,7 +7,8 @@ import {
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
-const contactArr = [];
+
+
 
 class AddContactsForm extends Component {
     static propTypes = {
@@ -20,6 +21,7 @@ class AddContactsForm extends Component {
     number: '',
   };
 
+
   handleInputChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
@@ -30,13 +32,13 @@ class AddContactsForm extends Component {
      if (this.props.contacts.some(contact => contact.name === this.state.name)) {
        window.alert(`${this.state.name} is already in contacts`);
        return
-     }
-    contactArr.push({
+    }
+    
+    this.props.onSubmit([{
       name: this.state.name,
       id: nanoid(),
-      number: this.state.number,
-    });
-    this.props.onSubmit(contactArr);
+      number: this.state.number
+    }]);
     this.handleFormReset();
   };
 

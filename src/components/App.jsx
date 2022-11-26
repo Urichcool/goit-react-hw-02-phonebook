@@ -1,8 +1,9 @@
 import { Component } from "react";
 import {
   ContactsContainer,
-  ContactsTitle,
-  ContactsApp
+  PhoneBookTitle,
+  ContactsApp,
+  ContactsTitle
 } from "./App,styled";
 import AppAddContactsForm from "./AppAddContactsForm";
 import AppContactsList from "./AppContactsList";
@@ -18,8 +19,10 @@ export class App extends Component {
   };
 
   formSubmitHandler = data => {
-    this.setState({ contacts: [...data] });
-  };
+   this.setState({
+     contacts: this.state.contacts.concat(data),
+   });
+}
 
   formInputHandler = data => {
     this.setState({ filter: data });
@@ -35,18 +38,22 @@ export class App extends Component {
     return (
       <ContactsContainer>
         <ContactsApp>
-          <ContactsTitle>Phonebook</ContactsTitle>
+          <PhoneBookTitle>Phonebook</PhoneBookTitle>
           <AppAddContactsForm
             onSubmit={this.formSubmitHandler}
-            contacts={this.state.contacts} />
-          <ContactsTitle>Contacts</ContactsTitle>
-          <AppContactsInput
-            filter={this.formInputHandler} />
-          <AppContactsList
             contacts={this.state.contacts}
-            filter={this.state.filter}
-            setContact={this.setContact}
           />
+          {this.state.contacts.length !== 0 && (
+            <div>
+              <ContactsTitle>Contacts</ContactsTitle>
+              <AppContactsInput filter={this.formInputHandler} />
+              <AppContactsList
+                contacts={this.state.contacts}
+                filter={this.state.filter}
+                setContact={this.setContact}
+              />
+            </div>
+          )}
         </ContactsApp>
       </ContactsContainer>
     );
