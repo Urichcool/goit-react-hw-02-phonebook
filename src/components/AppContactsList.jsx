@@ -30,5 +30,6 @@ export default AppContactsList
 
 AppContactsList.propTypes = {
     contacts: PropTypes.array.isRequired,
-    filter: PropTypes.string.isRequired
+    filter: PropTypes.string.isRequired,
+    setContact:PropTypes.func.isRequired
 }

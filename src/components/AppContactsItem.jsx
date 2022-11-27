@@ -21,4 +21,6 @@ export default AppContactsItem;
 AppContactsItem.propTypes = {
     name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  setContact: PropTypes.func.isRequired
 }
